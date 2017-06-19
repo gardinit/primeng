@@ -553,8 +553,11 @@ export class Calendar implements AfterViewInit,AfterViewChecked,OnInit,OnDestroy
     }
     
     updateModel() {
-        if(this.dataType == 'date'){
-            this.onModelChange(new Date(this.value));
+        if (this.dataType == 'date') {
+            if (this.timeOnly)
+                this.onModelChange(new Date(this.value));
+            else
+                this.onModelChange(this.value);
         }
         else if(this.dataType == 'string') {
             if(this.timeOnly)
